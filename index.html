@@ -1660,7 +1660,6 @@
                             <select id="productInterest" name="productInterest" required>
                                 <option value="">Select a product...</option>
                                 <option value="Artisanal Orthodox Green Tea - ₹165/100g">Artisanal Orthodox Green Tea – ₹165/100g</option>
-                                <option value="Whole Leaf Green Tea">Whole Leaf Green Tea</option>
                                 <option value="Bulk / Wholesale Enquiry">Bulk / Wholesale Enquiry</option>
                                 <option value="General Query">Other / General Query</option>
                             </select>
@@ -1863,7 +1862,8 @@
 
             if (!isValid) return;
 
-            const fullPhoneNumber = `${countryCode} ${digits}`;
+            // Prepend single quote (') so Google Sheets interprets the value strictly as plain text instead of a numeric formula
+            const fullPhoneNumber = `'${countryCode} ${digits}`;
             const payload = {
                 name: fullName,
                 email: email,
