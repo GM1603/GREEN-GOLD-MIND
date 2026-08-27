@@ -9,8 +9,8 @@
     <link rel="icon" type="image/png" href="5.png">
 
     <!-- Primary Meta Tags -->
-    <meta name="description" content="Premium artisanal whole leaf green tea from the Peermade region, 3500 ft above sea level. Pure, aromatic, and crafted for wellness. Direct from Kuttikkanam, Idukk[...]">
-    <meta name="keywords" content="green tea, premium green tea, whole leaf green tea, orthodox green tea, Kerala green tea, Peermade tea, Kuttikkanam tea, artisanal tea, wellness tea, Green Gold Mind[...]">
+    <meta name="description" content="Premium artisanal whole leaf green tea from the Peermade region, 3500 ft above sea level. Pure, aromatic, and crafted for wellness. Direct from Kuttikkanam, Idukki.">
+    <meta name="keywords" content="green tea, premium green tea, whole leaf green tea, orthodox green tea, Kerala green tea, Peermade tea, Kuttikkanam tea, artisanal tea, wellness tea, Green Gold Mind">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
@@ -24,9 +24,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Philosopher:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <style>
-        /* ============================================
-           CSS VARIABLES & RESET
-           ============================================ */
         :root {
             --dark-green: #112d1b;
             --mid-green: #1a3d26;
@@ -38,15 +35,14 @@
             --gold-light: #d4b572;
             --gold-dark: #a8863e;
             --text-dark: #1a1a1a;
-            --text-medium: #555;
-            --text-light: #888;
+            --text-medium: #555555;
+            --text-light: #888888;
             --white: #ffffff;
+            --error-red: #c0392b;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
-            --shadow-lg: 0 15px 50px rgba(0,0,0,0.12);
             --radius-sm: 8px;
             --radius-md: 12px;
-            --radius-lg: 20px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -56,440 +52,306 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-            font-size: 16px;
-        }
-
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--cream);
             color: var(--text-dark);
             line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, .brand-font {
-            font-family: 'Philosopher', Georgia, serif;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        .section-label {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-            font-family: 'Philosopher', serif;
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--dark-green);
-            margin-bottom: 16px;
-            line-height: 1.2;
-        }
-
-        .section-subtitle {
-            font-size: 1.05rem;
-            color: var(--text-medium);
-            max-width: 600px;
-            font-weight: 300;
-            line-height: 1.8;
-        }
-
-        /* Fade-in animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ============================================
-           NAVIGATION
-           ============================================ */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(17, 45, 27, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            transition: var(--transition);
-            border-bottom: 1px solid rgba(197, 160, 89, 0.15);
-        }
-
-        .navbar.scrolled {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-
-        .nav-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-            height: 72px;
-        }
-
-        .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .nav-brand h1 {
-            font-size: 1.4rem;
-            color: var(--gold);
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-
-        .nav-brand .brand-sub {
-            font-family: 'Inter', sans-serif;
-            font-size: 0.6rem;
-            color: rgba(197, 160, 89, 0.7);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            font-weight: 400;
-            display: block;
-            margin-top: -2px;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--cream);
-            font-size: 0.9rem;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            transition: color var(--transition);
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold);
-            transition: width var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-cta {
-            background: var(--gold) !important;
-            color: var(--dark-green) !important;
-            padding: 10px 24px;
-            border-radius: 50px;
-            font-weight: 600 !important;
-            font-size: 0.85rem !important;
-            transition: all var(--transition) !important;
-        }
-
-        .nav-cta:hover {
-            background: var(--gold-light) !important;
-            transform: translateY(-1px);
-        }
-
-        .nav-cta::after {
-            display: none !important;
-        }
-
-        /* Hamburger */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            gap: 5px;
-            padding: 5px;
-        }
-
-        .hamburger span {
-            width: 26px;
-            height: 2px;
-            background: var(--gold);
-            transition: var(--transition);
-            border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        /* ============================================
-           HERO SECTION
-           ============================================ */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(160deg, var(--dark-green) 0%, #0d2215 40%, var(--mid-green) 100%);
-            overflow: hidden;
-            padding-top: 72px;
-        }
-
-        .hero-bg-image {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: url('2.jpeg') center center / contain no-repeat;
-            opacity: 0.15;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(17, 45, 27, 0.6) 70%);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 800px;
             padding: 60px 24px;
         }
 
-        /* ... rest of your existing CSS (unchanged) ... */
+        .enquiry-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
 
-        /* ENQUIRY related minimal styles for errors (added) */
-        .error { color: #c0392b; font-size: 0.82rem; display:block; height:18px; margin-top:6px; }
+        @media (max-width: 768px) {
+            .enquiry-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        .enquiry-info h2 {
+            font-family: 'Philosopher', Georgia, serif;
+            font-size: 2.2rem;
+            color: var(--dark-green);
+            margin-bottom: 16px;
+        }
+
+        .enquiry-info p {
+            color: var(--text-medium);
+            margin-bottom: 24px;
+        }
+
+        .enquiry-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark-green);
+            margin-bottom: 6px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.95rem;
+            background-color: var(--cream-light);
+            transition: border-color var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background-color: var(--white);
+        }
+
+        .phone-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .phone-row .country-select {
+            flex: 0 0 42%;
+        }
+
+        .phone-row .phone-input {
+            flex: 1;
+        }
+
+        .error {
+            color: var(--error-red);
+            font-size: 0.78rem;
+            margin-top: 4px;
+            min-height: 18px;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--dark-green);
+            border: none;
+            padding: 12px 28px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+        }
+
+        .form-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 8px;
+        }
+
+        #form-success {
+            color: var(--accent-green);
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: none;
+        }
     </style>
 </head>
 <body>
 
-<!-- (body content kept identical to original file up to the enquiry section) -->
+<main class="container">
+    <div class="enquiry-grid">
+        <!-- Left Column: Context -->
+        <div class="enquiry-info">
+            <h2>Experience Pure Peermade Harvest</h2>
+            <p>Connect with us for retail, sample collections, or wholesale distribution inquiries. Handcrafted tea delivered direct from the misty estates of Kuttikkanam.</p>
+        </div>
 
-<!-- To avoid changing large HTML in many places, we inject the enhanced enquiry form dynamically.
-     The script below will replace the right column of the .enquiry-grid with a validated form.
-     This keeps layout intact and only modifies the DOM at runtime. -->
+        <!-- Right Column: Validated Form -->
+        <div class="enquiry-card">
+            <form id="enquiryForm" novalidate>
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                    <small class="error" id="err-name"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address (optional)</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com">
+                    <small class="error" id="err-email"></small>
+                </div>
+
+                <div class="phone-row">
+                    <div class="form-group country-select">
+                        <label for="countryCode">Country *</label>
+                        <select id="countryCode" name="countryCode" required>
+                            <option value="+91">India (+91)</option>
+                            <option value="+1">USA / Canada (+1)</option>
+                            <option value="+44">UK (+44)</option>
+                            <option value="+971">UAE (+971)</option>
+                            <option value="+966">Saudi Arabia (+966)</option>
+                            <option value="+65">Singapore (+65)</option>
+                            <option value="+61">Australia (+61)</option>
+                            <option value="+49">Germany (+49)</option>
+                            <option value="+33">France (+33)</option>
+                            <option value="+81">Japan (+81)</option>
+                            <option value="+86">China (+86)</option>
+                            <option value="+60">Malaysia (+60)</option>
+                        </select>
+                        <small class="error" id="err-country"></small>
+                    </div>
+
+                    <div class="form-group phone-input">
+                        <label for="phoneNumber">Phone Number *</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="9876543210" required>
+                        <small class="error" id="err-phone"></small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="productInterest">Product Interest *</label>
+                    <select id="productInterest" name="productInterest" required>
+                        <option value="">-- Select product --</option>
+                        <option value="green-leaf">Whole Leaf Green Tea</option>
+                        <option value="orthodox-green">Orthodox Green Tea</option>
+                        <option value="sample-pack">Sample Pack</option>
+                        <option value="bulk-order">Bulk / Wholesale Order</option>
+                    </select>
+                    <small class="error" id="err-product"></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message (optional)</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Specify quantities, delivery requirements, or general notes"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-gold">Send Enquiry</button>
+                    <span id="form-success">Enquiry submitted successfully!</span>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
 
 <script>
-(function(){
-  // create the form HTML string
-  const formHTML = `
-  <div class="enquiry-form">
-    <form id="enquiryForm" novalidate>
-      <div style="display:grid;gap:12px;">
-        <label>
-          Full Name *
-          <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
-          <small class="error" id="err-name"></small>
-        </label>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('enquiryForm');
+    const fullName = document.getElementById('fullName');
+    const email = document.getElementById('email');
+    const countryCode = document.getElementById('countryCode');
+    const phone = document.getElementById('phoneNumber');
+    const product = document.getElementById('productInterest');
 
-        <label>
-          Email (optional)
-          <input type="email" id="email" name="email" placeholder="you@example.com">
-          <small class="error" id="err-email"></small>
-        </label>
+    const errName = document.getElementById('err-name');
+    const errEmail = document.getElementById('err-email');
+    const errCountry = document.getElementById('err-country');
+    const errPhone = document.getElementById('err-phone');
+    const errProduct = document.getElementById('err-product');
+    const successBox = document.getElementById('form-success');
 
-        <div style="display:flex;gap:8px;align-items:center;">
-          <label style="flex:0 0 36%;">
-            Country code *
-            <select id="countryCode" name="countryCode" required>
-              <option value="+91">India (+91)</option>
-              <option value="+1">United States (+1)</option>
-              <option value="+44">United Kingdom (+44)</option>
-              <option value="+61">Australia (+61)</option>
-              <option value="+49">Germany (+49)</option>
-              <option value="+33">France (+33)</option>
-              <option value="+81">Japan (+81)</option>
-              <option value="+86">China (+86)</option>
-              <option value="+7">Russia (+7)</option>
-              <option value="+39">Italy (+39)</option>
-              <option value="+55">Brazil (+55)</option>
-              <option value="+27">South Africa (+27)</option>
-              <option value="+971">United Arab Emirates (+971)</option>
-              <option value="+966">Saudi Arabia (+966)</option>
-              <option value="+92">Pakistan (+92)</option>
-              <option value="+880">Bangladesh (+880)</option>
-              <option value="+60">Malaysia (+60)</option>
-              <option value="+65">Singapore (+65)</option>
-              <option value="+34">Spain (+34)</option>
-              <option value="+46">Sweden (+46)</option>
-              <option value="+31">Netherlands (+31)</option>
-              <option value="+82">South Korea (+82)</option>
-              <option value="+420">Czech Republic (+420)</option>
-              <option value="+48">Poland (+48)</option>
-              <option value="+41">Switzerland (+41)</option>
-              <option value="+352">Luxembourg (+352)</option>
-              <option value="+358">Finland (+358)</option>
-              <option value="+45">Denmark (+45)</option>
-              <option value="+30">Greece (+30)</option>
-              <option value="+52">Mexico (+52)</option>
-              <option value="+351">Portugal (+351)</option>
-              <option value="+43">Austria (+43)</option>
-              <option value="+380">Ukraine (+380)</option>
-              <option value="+47">Norway (+47)</option>
-              <option value="+94">Sri Lanka (+94)</option>
-              <option value="+255">Tanzania (+255)</option>
-              <option value="+254">Kenya (+254)</option>
-              <option value="+353">Ireland (+353)</option>
-              <option value="+90">Turkey (+90)</option>
-              <option value="+98">Iran (+98)</option>
-              <option value="+20">Egypt (+20)</option>
-              <option value="+886">Taiwan (+886)</option>
-              <option value="+66">Thailand (+66)</option>
-              <option value="+95">Myanmar (+95)</option>
-              <option value="+62">Indonesia (+62)</option>
-              <option value="+63">Philippines (+63)</option>
-              <option value="+509">Haiti (+509)</option>
-              <option value="+970">Palestine (+970)</option>
-              <option value="+886">Taiwan (+886)</option>
-              <option value="+66">Thailand (+66)</option>
-            </select>
-            <small class="error" id="err-country"></small>
-          </label>
+    function onlyDigits(str) {
+        return str.replace(/\D/g, '');
+    }
 
-          <label style="flex:1;">
-            Phone Number *
-            <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="1234567890" required>
-            <small class="error" id="err-phone"></small>
-          </label>
-        </div>
+    function validateEmail(val) {
+        if (!val) return true;
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(val);
+    }
 
-        <label>
-          Product Interest *
-          <select id="productInterest" name="productInterest" required>
-            <option value="">-- Select product --</option>
-            <option value="green-leaf">Whole Leaf Green Tea</option>
-            <option value="orthodox-green">Orthodox Green Tea</option>
-            <option value="sample-pack">Sample Pack</option>
-            <option value="bulk-order">Bulk Order</option>
-          </select>
-          <small class="error" id="err-product"></small>
-        </label>
+    function clearErrors() {
+        errName.textContent = '';
+        errEmail.textContent = '';
+        errCountry.textContent = '';
+        errPhone.textContent = '';
+        errProduct.textContent = '';
+        successBox.style.display = 'none';
+    }
 
-        <label>
-          Message (optional)
-          <textarea id="message" name="message" rows="4" placeholder="Tell us more (optional)"></textarea>
-        </label>
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        clearErrors();
+        let isValid = true;
 
-        <div style="display:flex;gap:12px;align-items:center;">
-          <button type="submit" class="btn btn-gold">Send Enquiry</button>
-          <div id="form-success" style="color:green;display:none;">Enquiry accepted — thanks!</div>
-        </div>
-      </div>
-    </form>
-  </div>`;
-
-  // validation script to inject
-  const scriptContent = `
-  (function(){
-    function onlyDigits(str){ return str.replace(/\\D/g,''); }
-    function validateEmailSimple(value){ if(!value) return true; const at = value.indexOf('@'); if(at<1) return false; const dotAfter = value.indexOf('.', at); return dotAfter > at+1; }
-    function validatePhoneForCountry(code, digits){ if(code === '+91'){ return digits.length === 10; } return digits.length >=6 && digits.length <=15; }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      const grid = document.querySelector('.enquiry-grid');
-      if(!grid) return;
-      // Replace second column (right-hand) if present; else append
-      if(grid.children.length >= 2){
-        grid.children[1].innerHTML = formHTML;
-      } else {
-        const wrapper = document.createElement('div'); wrapper.innerHTML = formHTML; grid.appendChild(wrapper);
-      }
-
-      // Now wire up validation
-      const form = document.getElementById('enquiryForm');
-      if(!form) return;
-      const fullName = document.getElementById('fullName');
-      const email = document.getElementById('email');
-      const countryCode = document.getElementById('countryCode');
-      const phone = document.getElementById('phoneNumber');
-      const product = document.getElementById('productInterest');
-      const errName = document.getElementById('err-name');
-      const errEmail = document.getElementById('err-email');
-      const errCountry = document.getElementById('err-country');
-      const errPhone = document.getElementById('err-phone');
-      const errProduct = document.getElementById('err-product');
-      const successBox = document.getElementById('form-success');
-
-      function clearErrors(){ errName.textContent=''; errEmail.textContent=''; errCountry.textContent=''; errPhone.textContent=''; errProduct.textContent=''; successBox.style.display='none'; }
-
-      form.addEventListener('submit', function(e){
-        e.preventDefault(); clearErrors(); let ok = true;
-        const nameVal = fullName.value.trim(); if(nameVal.length < 2){ errName.textContent = 'Please enter your full name.'; ok = false; }
-        if(!countryCode.value){ errCountry.textContent = 'Please select country code.'; ok = false; }
-        const rawPhone = phone.value || ''; const digits = onlyDigits(rawPhone);
-        if(!digits){ errPhone.textContent = 'Please enter a valid phone number.'; ok = false; }
-        else if(!validatePhoneForCountry(countryCode.value, digits)){
-          if(countryCode.value === '+91') errPhone.textContent = 'For India (+91) phone must be exactly 10 digits.'; else errPhone.textContent = 'Phone must contain 6 to 15 digits (numbers only).'; ok = false;
+        if (fullName.value.trim().length < 2) {
+            errName.textContent = 'Please enter your full name.';
+            isValid = false;
         }
-        const emailVal = email.value.trim(); if(emailVal && !validateEmailSimple(emailVal)){ errEmail.textContent = 'Please enter a valid email (must include @ and domain).'; ok = false; }
-        if(!product.value){ errProduct.textContent = 'Please choose a product interest.'; ok = false; }
-        if(!ok){ const firstErr = document.querySelector('.error:not(:empty)'); if(firstErr){ const input = firstErr.previousElementSibling; if(input && typeof input.focus === 'function') input.focus(); } return; }
-        successBox.textContent = 'Enquiry accepted — thanks!'; successBox.style.display = 'block'; form.reset();
-      });
 
-      // realtime clears
-      phone.addEventListener('input', ()=>{ errPhone.textContent=''; });
-      fullName.addEventListener('input', ()=>{ errName.textContent=''; });
-      email.addEventListener('input', ()=>{ errEmail.textContent=''; });
-      product.addEventListener('change', ()=>{ errProduct.textContent=''; });
-      countryCode.addEventListener('change', ()=>{ errCountry.textContent=''; });
+        if (!countryCode.value) {
+            errCountry.textContent = 'Please select a country code.';
+            isValid = false;
+        }
+
+        const digits = onlyDigits(phone.value);
+        if (!digits) {
+            errPhone.textContent = 'Please enter a valid phone number.';
+            isValid = false;
+        } else if (countryCode.value === '+91' && digits.length !== 10) {
+            errPhone.textContent = 'India (+91) numbers must be exactly 10 digits.';
+            isValid = false;
+        } else if (digits.length < 6 || digits.length > 15) {
+            errPhone.textContent = 'Phone number must be 6 to 15 digits.';
+            isValid = false;
+        }
+
+        const emailVal = email.value.trim();
+        if (emailVal && !validateEmail(emailVal)) {
+            errEmail.textContent = 'Please provide a valid email format (e.g. name@domain.com).';
+            isValid = false;
+        }
+
+        if (!product.value) {
+            errProduct.textContent = 'Please choose a product interest.';
+            isValid = false;
+        }
+
+        if (!isValid) {
+            const firstErr = document.querySelector('.error:not(:empty)');
+            if (firstErr) {
+                const input = firstErr.previousElementSibling;
+                if (input && typeof input.focus === 'function') input.focus();
+            }
+            return;
+        }
+
+        successBox.style.display = 'inline-block';
+        form.reset();
     });
-  })();`;
 
-  // Append the script to the page
-  function appendScript(){
-    const inline = document.createElement('script');
-    inline.type = 'text/javascript';
-    inline.text = `${scriptContent}`;
-    document.body.appendChild(inline);
-  }
-
-  if(document.readyState === 'loading'){
-    document.addEventListener('DOMContentLoaded', appendScript);
-  } else appendScript();
-})();
+    [fullName, email, phone].forEach(el => el.addEventListener('input', clearErrors));
+    [countryCode, product].forEach(el => el.addEventListener('change', clearErrors));
+});
 </script>
 
 </body>
