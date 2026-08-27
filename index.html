@@ -41,6 +41,7 @@
             --text-medium: #555;
             --text-light: #888;
             --white: #ffffff;
+            --error-red: #c0392b;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
             --shadow-md: 0 8px 30px rgba(0,0,0,0.08);
             --shadow-lg: 0 15px 50px rgba(0,0,0,0.12);
@@ -261,7 +262,7 @@
         }
 
         /* ============================================
-           HERO SECTION
+           HERO SECTION & ANIMATION
            ============================================ */
         .hero {
             position: relative;
@@ -297,13 +298,6 @@
             padding: 60px 24px;
         }
 
-        /* ===========================================
-           TEA ANIMATION — Complete Rewrite
-           Container: 200x280. Cup bottom-center.
-           Kettle spout directly above cup opening.
-           Water stream connects spout to cup.
-           10s loop with clean reset.
-           =========================================== */
         .animation-container {
             position: relative;
             width: 200px;
@@ -311,7 +305,6 @@
             margin: 0 auto 40px;
         }
 
-        /* --- CUP: centered at bottom --- */
         .cup {
             position: absolute;
             bottom: 0;
@@ -338,7 +331,6 @@
             z-index: 2;
         }
 
-        /* --- TEA LIQUID inside cup --- */
         .tea-liquid {
             position: absolute;
             bottom: 0; left: 0;
@@ -348,7 +340,6 @@
             animation: teaFill 10s infinite;
         }
 
-        /* --- KETTLE SPOUT: directly above cup center --- */
         .kettle-spout {
             position: absolute;
             top: 82px;
@@ -363,7 +354,6 @@
             animation: kettleFade 10s infinite;
         }
 
-        /* --- WATER STREAM: from spout tip into cup --- */
         .water-stream {
             position: absolute;
             top: 98px;
@@ -376,7 +366,6 @@
             animation: waterPour 10s infinite;
         }
 
-        /* --- STEAM WISPS --- */
         .steam-wrapper {
             position: absolute;
             bottom: 78px;
@@ -398,7 +387,6 @@
         .steam:nth-child(2) { animation-delay: 0.5s; height: 30px; }
         .steam:nth-child(3) { animation-delay: 1.0s; height: 20px; }
 
-        /* --- GMP LOGO (actual brand image) --- */
         .anim-logo {
             position: absolute;
             top: 60px;
@@ -417,58 +405,39 @@
             border-radius: 6px;
         }
 
-        /* ==================================
-           KEYFRAMES — 10s Loop
-           ==================================
-           0s–1s   (0%–10%)   Kettle visible, ready
-           1s–3s   (10%–30%)  Water pours, cup fills
-           3s–3.5s (30%–35%)  Pour stops
-           3.5s–4.5s (35%–45%) Kettle fades, tea darkens
-           4.5s–6.5s (45%–65%) Steam rises
-           5.5s–8.5s (55%–85%) Logo fades in, holds
-           8.5s–9.5s (85%–95%) Everything fades
-           9.5s–10s  (95%–100%) Reset
-        */
-
         @keyframes kettleFade {
-            0%        { opacity: 1; }
-            30%       { opacity: 1; }
-            42%       { opacity: 0; }
-            100%      { opacity: 0; }
+            0%, 30% { opacity: 1; }
+            42%, 100% { opacity: 0; }
         }
 
         @keyframes waterPour {
-            0%, 8%    { height: 0; opacity: 0; }
-            14%       { height: 112px; opacity: 1; }
-            28%       { height: 112px; opacity: 1; }
-            34%       { height: 0; opacity: 0; }
-            100%      { height: 0; opacity: 0; }
+            0%, 8% { height: 0; opacity: 0; }
+            14%, 28% { height: 112px; opacity: 1; }
+            34%, 100% { height: 0; opacity: 0; }
         }
 
         @keyframes teaFill {
-            0%, 10%   { height: 0; background: #b5c49a; }
-            30%       { height: 52px; background: #a3b18a; }
-            45%       { height: 52px; background: #7b8e5c; }
-            82%       { height: 52px; background: #6d7f50; opacity: 1; }
-            93%       { height: 52px; opacity: 0; }
-            97%       { height: 0; opacity: 0; }
-            100%      { height: 0; opacity: 0; }
+            0%, 10% { height: 0; background: #b5c49a; }
+            30% { height: 52px; background: #a3b18a; }
+            45% { height: 52px; background: #7b8e5c; }
+            82% { height: 52px; background: #6d7f50; opacity: 1; }
+            93% { height: 52px; opacity: 0; }
+            97%, 100% { height: 0; opacity: 0; }
         }
 
         @keyframes steamRise {
-            0%, 40%   { transform: translateY(0) scaleX(1); opacity: 0; }
-            50%       { opacity: 0.55; }
-            65%       { opacity: 0.3; transform: translateY(-40px) scaleX(1.4); }
-            80%       { opacity: 0; transform: translateY(-70px) scaleX(2); }
-            100%      { opacity: 0; }
+            0%, 40% { transform: translateY(0) scaleX(1); opacity: 0; }
+            50% { opacity: 0.55; }
+            65% { opacity: 0.3; transform: translateY(-40px) scaleX(1.4); }
+            80% { opacity: 0; transform: translateY(-70px) scaleX(2); }
+            100% { opacity: 0; }
         }
 
         @keyframes logoAppear {
-            0%, 52%   { opacity: 0; transform: translateX(-50%) translateY(20px) scale(0.7); }
-            64%       { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-            82%       { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
-            93%       { opacity: 0; transform: translateX(-50%) translateY(-5px) scale(1.02); }
-            100%      { opacity: 0; transform: translateX(-50%) translateY(20px) scale(0.7); }
+            0%, 52% { opacity: 0; transform: translateX(-50%) translateY(20px) scale(0.7); }
+            64%, 82% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+            93% { opacity: 0; transform: translateX(-50%) translateY(-5px) scale(1.02); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(20px) scale(0.7); }
         }
 
         .hero h2 {
@@ -589,17 +558,6 @@
 
         .about-image:hover img {
             transform: scale(1.03);
-        }
-
-        .about-image::after {
-            content: '';
-            position: absolute;
-            top: -20px; left: -20px;
-            width: 100px; height: 100px;
-            border: 3px solid var(--gold);
-            border-radius: var(--radius-md);
-            opacity: 0.3;
-            z-index: -1;
         }
 
         .about-text {
@@ -1015,7 +973,7 @@
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .form-group label {
@@ -1049,6 +1007,20 @@
             background: var(--white);
         }
 
+        .phone-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .phone-input-group select {
+            flex: 0 0 135px;
+            text-overflow: ellipsis;
+        }
+
+        .phone-input-group input {
+            flex: 1;
+        }
+
         .form-group textarea {
             height: 100px;
             resize: vertical;
@@ -1058,6 +1030,14 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 16px;
+        }
+
+        .field-error {
+            color: var(--error-red);
+            font-size: 0.8rem;
+            display: block;
+            min-height: 18px;
+            margin-top: 4px;
         }
 
         .form-submit {
@@ -1073,6 +1053,7 @@
             cursor: pointer;
             transition: all var(--transition);
             letter-spacing: 0.5px;
+            margin-top: 8px;
         }
 
         .form-submit:hover {
@@ -1328,6 +1309,16 @@
                 padding: 24px;
             }
 
+            .phone-input-group {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .phone-input-group select {
+                width: 100%;
+                flex: auto;
+            }
+
             .about-features {
                 grid-template-columns: 1fr;
             }
@@ -1370,22 +1361,17 @@
         <div class="hero-content">
             <!-- Tea Pouring Animation -->
             <div class="animation-container">
-                <!-- GMP Logo (reveals from steam — uses actual brand logo) -->
                 <div class="anim-logo">
                     <img src="5.png" alt="Green Gold Mind Logo">
                 </div>
 
-                <!-- Kettle spout (positioned above cup) -->
                 <div class="kettle-spout"></div>
-                <!-- Water stream (connects spout to cup) -->
                 <div class="water-stream"></div>
-                <!-- Steam (rises after pouring) -->
                 <div class="steam-wrapper">
                     <div class="steam"></div>
                     <div class="steam"></div>
                     <div class="steam"></div>
                 </div>
-                <!-- Cup with handle -->
                 <div class="cup-handle"></div>
                 <div class="cup">
                     <div class="tea-liquid"></div>
@@ -1419,7 +1405,7 @@
             </a>
         </div>
 
-        <a href="#about" class="hero-scroll">
+        <a href="#about" class="hero-scroll" aria-label="Scroll to About section">
             <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="6 9 12 15 18 9"/>
             </svg>
@@ -1434,10 +1420,10 @@
             <div class="about-grid">
                 <div class="about-image fade-in" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
                     <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.08);">
-                        <img src="4.jpg" alt="Fresh green tea leaves from Peermade tea gardens, Kerala" loading="lazy" style="width:100%; height:100%; object-fit:cover; transition: transform 0.6s ease;">
+                        <img src="4.jpg" alt="Fresh green tea leaves from Peermade tea gardens, Kerala" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
                     </div>
                     <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,0.08);">
-                        <img src="1.jpeg" alt="Green Gold Mind premium green tea product lineup" loading="lazy" style="width:100%; height:100%; object-fit:cover; transition: transform 0.6s ease;">
+                        <img src="1.jpeg" alt="Green Gold Mind premium green tea product lineup" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
                     </div>
                 </div>
                 <div class="about-text fade-in">
@@ -1482,45 +1468,41 @@
     <section class="benefits">
         <div class="container">
             <div class="fade-in" style="text-align: center;">
-                <span class="section-label" style="justify-content: center;">Why Green Gold Mind</span>
+                <span class="section-label">Why Green Gold Mind</span>
                 <h2 class="section-title">Nourish Your Body & Soul</h2>
             </div>
             
             <div class="benefits-grid">
-                <!-- Benefit 1 -->
                 <div class="benefit-card fade-in">
                     <div class="benefit-icon">
                         <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     </div>
                     <h4>Rich in Antioxidants</h4>
-                    <p>Packed with powerful catechins that help protect your cells from damage and prevent premature aging.</p>
+                    <p>Packed with powerful catechins that help protect your cells from oxidative damage and promote vitality.</p>
                 </div>
                 
-                <!-- Benefit 2 -->
                 <div class="benefit-card fade-in">
                     <div class="benefit-icon">
                         <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
                     </div>
                     <h4>Boosts Metabolism</h4>
-                    <p>Naturally accelerates fat burning and improves physical performance with a clean, sustained energy lift.</p>
+                    <p>Naturally accelerates calorie burning and supports sustained energy levels without a harsh crash.</p>
                 </div>
 
-                <!-- Benefit 3 -->
                 <div class="benefit-card fade-in">
                     <div class="benefit-icon">
                         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
                     </div>
                     <h4>Calms the Mind</h4>
-                    <p>Abundant in L-theanine, promoting a state of relaxed alertness and reducing stress without drowsiness.</p>
+                    <p>Abundant in natural L-theanine, promoting relaxed focus, mindfulness, and gentle stress reduction.</p>
                 </div>
 
-                <!-- Benefit 4 -->
                 <div class="benefit-card fade-in">
                     <div class="benefit-icon">
                         <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                     </div>
                     <h4>Heart Health</h4>
-                    <p>Regular consumption helps maintain healthy cholesterol levels and supports overall cardiovascular wellness.</p>
+                    <p>Regular consumption helps maintain healthy cardiovascular function and balanced cholesterol levels.</p>
                 </div>
             </div>
         </div>
@@ -1534,10 +1516,9 @@
             <div class="products-header fade-in">
                 <span class="section-label">Our Collections</span>
                 <h2 class="section-title">Premium Green Teas</h2>
-                <p class="section-subtitle">Sourced directly from our estate in Kuttikkanam, each blend is crafted to deliver a unique experience of flavour and wellness.</p>
+                <p class="section-subtitle">Sourced directly from our estate in Kuttikkanam, each blend is crafted to deliver a clean flavour and therapeutic wellness.</p>
             </div>
             <div class="products-grid">
-                <!-- Product 1 -->
                 <div class="product-card fade-in" style="max-width: 500px; margin: 0 auto;">
                     <div class="product-card-image">
                         <span class="product-tag">Whole Leaf</span>
@@ -1545,7 +1526,7 @@
                     </div>
                     <div class="product-card-body">
                         <h3 class="brand-font">Artisanal Orthodox</h3>
-                        <p>Precise craft delivers notes of gentle floral infusion and a clean, naturally sweet finish. Intact leaves carefully rolled to preserve essential oils.</p>
+                        <p>Gentle floral notes with a clean, naturally sweet finish. Intact whole leaves carefully rolled to preserve delicate aromatic essential oils.</p>
                         <div class="product-card-footer">
                             <div class="product-price">
                                 ₹165
@@ -1573,22 +1554,22 @@
                 <div class="brew-step fade-in">
                     <div class="step-number">1</div>
                     <h4>Measure</h4>
-                    <p>Place 3 grams of whole leaf green tea in a cup (~150ml capacity).</p>
+                    <p>Place 3 grams of whole leaf green tea in a cup or teapot (~150ml capacity).</p>
                 </div>
                 <div class="brew-step fade-in">
                     <div class="step-number">2</div>
                     <h4>Heat Water</h4>
-                    <p>Use water below boiling point (70°–85°C) to prevent burning the delicate leaves.</p>
+                    <p>Use water below boiling point (70°–85°C) to protect the sensitive antioxidants and aromatics.</p>
                 </div>
                 <div class="brew-step fade-in">
                     <div class="step-number">3</div>
                     <h4>Steep</h4>
-                    <p>Pour warm water over the leaves and let them steep for 5 minutes. Watch them unfurl beautifully.</p>
+                    <p>Pour warm water over the leaves and let them steep for 4 to 5 minutes as they slowly unfurl.</p>
                 </div>
                 <div class="brew-step fade-in">
                     <div class="step-number">4</div>
                     <h4>Enjoy</h4>
-                    <p>Drink straight from the glass. The leaves can be infused a couple more times for additional cups.</p>
+                    <p>Sip fresh. The pristine whole leaves can be re-steeped 1–2 more times for subsequent cups.</p>
                 </div>
             </div>
         </div>
@@ -1603,7 +1584,7 @@
                 <div class="enquiry-info fade-in">
                     <span class="section-label">Get in Touch</span>
                     <h2 class="section-title">We'd Love to Hear from You</h2>
-                    <p>Whether you're looking to place an order, need bulk pricing, or simply want to know more about our teas — drop us a message and we'll get back to you promptly.</p>
+                    <p>Whether you are looking to place an individual order, require wholesale/bulk supply, or have questions regarding our garden harvest, send us a message below.</p>
 
                     <div class="contact-item">
                         <div class="contact-icon">📧</div>
@@ -1636,34 +1617,61 @@
                 </div>
 
                 <div class="enquiry-form-card fade-in">
-                    <form id="enquiryForm" onsubmit="submitForm(event)">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required placeholder="Your full name">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number *</label>
-                                <input type="tel" id="phone" name="phone" required placeholder="+91 XXXXX XXXXX">
-                            </div>
+                    <form id="enquiryForm" novalidate onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+                            <small class="field-error" id="err-name"></small>
                         </div>
+
                         <div class="form-group">
                             <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required placeholder="your@email.com">
+                            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            <small class="field-error" id="err-email"></small>
                         </div>
+
                         <div class="form-group">
-                            <label for="product">Product Interest</label>
-                            <select id="product" name="product">
+                            <label>Phone Number *</label>
+                            <div class="phone-input-group">
+                                <select id="countryCode" name="countryCode" required>
+                                    <option value="+91">India (+91)</option>
+                                    <option value="+1">USA / Canada (+1)</option>
+                                    <option value="+44">UK (+44)</option>
+                                    <option value="+971">UAE (+971)</option>
+                                    <option value="+966">Saudi Arabia (+966)</option>
+                                    <option value="+61">Australia (+61)</option>
+                                    <option value="+49">Germany (+49)</option>
+                                    <option value="+33">France (+33)</option>
+                                    <option value="+65">Singapore (+65)</option>
+                                    <option value="+60">Malaysia (+60)</option>
+                                    <option value="+41">Switzerland (+41)</option>
+                                    <option value="+47">Norway (+47)</option>
+                                    <option value="+420">Czech Republic (+420)</option>
+                                    <option value="+64">New Zealand (+64)</option>
+                                    <option value="+81">Japan (+81)</option>
+                                </select>
+                                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="10-digit mobile number" required>
+                            </div>
+                            <small class="field-error" id="err-phone"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productInterest">Product Interest *</label>
+                            <select id="productInterest" name="productInterest" required>
                                 <option value="">Select a product...</option>
                                 <option value="Artisanal Orthodox Green Tea - ₹165/100g">Artisanal Orthodox Green Tea – ₹165/100g</option>
+                                <option value="Whole Leaf Green Tea">Whole Leaf Green Tea</option>
                                 <option value="Bulk / Wholesale Enquiry">Bulk / Wholesale Enquiry</option>
-                                <option value="Other">Other</option>
+                                <option value="General Query">Other / General Query</option>
                             </select>
+                            <small class="field-error" id="err-product"></small>
                         </div>
+
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Tell us about your requirement..."></textarea>
+                            <label for="message">Message (optional)</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your requirement or delivery location..."></textarea>
                         </div>
+
                         <button type="submit" class="form-submit" id="submitBtn">
                             Send Enquiry
                         </button>
@@ -1706,7 +1714,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 <span>Green Gold Mind</span>. All rights reserved.</p>
+                <p>&copy; 2026 <span>Green Gold Mind</span>. All rights reserved.</p>
                 <p class="footer-legal">FSSAI: 21326178000844</p>
             </div>
         </div>
@@ -1715,7 +1723,7 @@
     <!-- ============================================
          WHATSAPP FLOATING BUTTON
          ============================================ -->
-    <a href="https://wa.me/919072201354?text=Hi%20Green%20Gold%20Mind!%20I'm%20interested%20in%20your%20green%20tea%20products." class="whatsapp-btn" target="_blank" rel="noopener" title="Chat on WhatsApp">
+    <a href="https://wa.me/919072201354?text=Hi%20Green%20Gold%20Mind!%20I'm%20interested%20in%20your%20green%20tea%20products." class="whatsapp-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
@@ -1723,60 +1731,9 @@
          JAVASCRIPT
          ============================================ -->
     <script>
-        // ==============================================
-        // GOOGLE APPS SCRIPT URL
-        // ==============================================
-        // SETUP INSTRUCTIONS:
-        // 1. Open your Google Sheet: https://docs.google.com/spreadsheets/d/1-GQDzjJO_EEpRgc84N-Zm0XIOkPIuAw9uilLTC4b-b0/edit
-        // 2. Go to Extensions > Apps Script
-        // 3. Delete any existing code and paste the following:
-        //
-        // ----- PASTE THIS INTO GOOGLE APPS SCRIPT -----
-        //
-        // function doPost(e) {
-        //   try {
-        //     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-        //     var data = JSON.parse(e.postData.contents);
-        //
-        //     // Add headers if sheet is empty
-        //     if (sheet.getLastRow() === 0) {
-        //       sheet.appendRow(['Timestamp', 'Name', 'Email', 'Phone', 'Product Interest', 'Message']);
-        //     }
-        //
-        //     sheet.appendRow([
-        //       new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-        //       data.name,
-        //       data.email,
-        //       data.phone,
-        //       data.product,
-        //       data.message
-        //     ]);
-        //
-        //     return ContentService.createTextOutput(
-        //       JSON.stringify({ result: 'success' })
-        //     ).setMimeType(ContentService.MimeType.JSON);
-        //
-        //   } catch (error) {
-        //     return ContentService.createTextOutput(
-        //       JSON.stringify({ result: 'error', error: error.toString() })
-        //     ).setMimeType(ContentService.MimeType.JSON);
-        //   }
-        // }
-        //
-        // ----- END OF APPS SCRIPT CODE -----
-        //
-        // 4. Click Deploy > New deployment
-        // 5. Select type: "Web app"
-        // 6. Set "Execute as": Me
-        // 7. Set "Who has access": Anyone
-        // 8. Click Deploy and authorize
-        // 9. Copy the Web App URL and paste it below:
-
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwFVjYhfrQrbxKtUPlvbk1NahvOuPScsg67_LQuCx9ujgDDYlxSNTSZAIuwquaerPBP/exec';
 
-        // ==============================================
-        // MOBILE MENU TOGGLE
-        // ==============================================
+        // Mobile Menu Toggle
         function toggleMenu() {
             const navLinks = document.getElementById('navLinks');
             const hamburger = document.getElementById('hamburger');
@@ -1784,67 +1741,136 @@
             hamburger.classList.toggle('active');
         }
 
-        // Close menu on link click
+        // Close mobile menu on navigation link click
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('active');
-                document.getElementById('hamburger').classList.remove('active');
+                const navLinks = document.getElementById('navLinks');
+                const hamburger = document.getElementById('hamburger');
+                if (navLinks && hamburger) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
             });
         });
 
-        // ==============================================
-        // NAVBAR SCROLL EFFECT
-        // ==============================================
+        // Navbar Shadow on Scroll
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
             }
         });
 
-        // ==============================================
-        // SCROLL FADE-IN ANIMATION
-        // ==============================================
+        // Scroll Fade-in Observer
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    // Stagger animation
                     setTimeout(() => {
                         entry.target.classList.add('visible');
-                    }, index * 100);
+                    }, index * 80);
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        // ==============================================
-        // FORM SUBMISSION TO GOOGLE SHEETS
-        // ==============================================
-        function submitForm(e) {
+        // Form Validation & Submission
+        function onlyDigits(str) {
+            return str.replace(/\D/g, '');
+        }
+
+        function isValidEmail(val) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+        }
+
+        function validatePhone(code, digits) {
+            if (code === '+91') {
+                return digits.length === 10;
+            }
+            return digits.length >= 6 && digits.length <= 15;
+        }
+
+        function clearFormErrors() {
+            document.getElementById('err-name').textContent = '';
+            document.getElementById('err-email').textContent = '';
+            document.getElementById('err-phone').textContent = '';
+            document.getElementById('err-product').textContent = '';
+        }
+
+        // Live error clearing
+        document.getElementById('fullName').addEventListener('input', () => {
+            document.getElementById('err-name').textContent = '';
+        });
+        document.getElementById('email').addEventListener('input', () => {
+            document.getElementById('err-email').textContent = '';
+        });
+        document.getElementById('phoneNumber').addEventListener('input', () => {
+            document.getElementById('err-phone').textContent = '';
+        });
+        document.getElementById('productInterest').addEventListener('change', () => {
+            document.getElementById('err-product').textContent = '';
+        });
+
+        function handleFormSubmit(e) {
             e.preventDefault();
+            clearFormErrors();
 
             const submitBtn = document.getElementById('submitBtn');
             const formMessage = document.getElementById('formMessage');
             const form = document.getElementById('enquiryForm');
 
-            const formData = {
-                name: document.getElementById('name').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                phone: document.getElementById('phone').value.trim(),
-                product: document.getElementById('product').value,
-                message: document.getElementById('message').value.trim()
-            };
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const countryCode = document.getElementById('countryCode').value;
+            const rawPhone = document.getElementById('phoneNumber').value.trim();
+            const product = document.getElementById('productInterest').value;
+            const message = document.getElementById('message').value.trim();
 
-            // Validation
-            if (!formData.name || !formData.email || !formData.phone) {
-                formMessage.className = 'form-message error';
-                formMessage.textContent = 'Please fill in all required fields.';
-                return;
+            const digits = onlyDigits(rawPhone);
+            let isValid = true;
+
+            if (fullName.length < 2) {
+                document.getElementById('err-name').textContent = 'Please enter your full name.';
+                isValid = false;
             }
+
+            if (!email || !isValidEmail(email)) {
+                document.getElementById('err-email').textContent = 'Please enter a valid email address.';
+                isValid = false;
+            }
+
+            if (!digits) {
+                document.getElementById('err-phone').textContent = 'Please enter your phone number.';
+                isValid = false;
+            } else if (!validatePhone(countryCode, digits)) {
+                if (countryCode === '+91') {
+                    document.getElementById('err-phone').textContent = 'For India (+91), enter a valid 10-digit mobile number.';
+                } else {
+                    document.getElementById('err-phone').textContent = 'Phone number must be between 6 and 15 digits.';
+                }
+                isValid = false;
+            }
+
+            if (!product) {
+                document.getElementById('err-product').textContent = 'Please select a product interest.';
+                isValid = false;
+            }
+
+            if (!isValid) return;
+
+            const fullPhoneNumber = `${countryCode} ${digits}`;
+            const payload = {
+                name: fullName,
+                email: email,
+                phone: fullPhoneNumber,
+                product: product,
+                message: message
+            };
 
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
@@ -1855,17 +1881,17 @@
                 method: 'POST',
                 mode: 'no-cors',
                 headers: { 'Content-Type': 'text/plain' },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(payload)
             })
             .then(() => {
                 formMessage.className = 'form-message success';
-                formMessage.textContent = '✅ Thank you! Your enquiry has been submitted successfully. We will get back to you soon!';
+                formMessage.textContent = '✅ Thank you! Your enquiry has been submitted successfully. We will connect with you soon.';
                 form.reset();
             })
-            .catch((error) => {
+            .catch((err) => {
+                console.error('Submission error:', err);
                 formMessage.className = 'form-message error';
-                formMessage.textContent = '❌ Something went wrong. Please try WhatsApp or email instead.';
-                console.error('Form error:', error);
+                formMessage.textContent = '❌ Submission error. Please contact us directly via WhatsApp (+91 9072201354).';
             })
             .finally(() => {
                 submitBtn.disabled = false;
@@ -1873,32 +1899,5 @@
             });
         }
     </script>
-
-    <!--
-    ==============================================
-    GOOGLE APPS SCRIPT SETUP — QUICK REFERENCE
-    ==============================================
-    
-    Your Google Sheet: https://docs.google.com/spreadsheets/d/1-GQDzjJO_EEpRgc84N-Zm0XIOkPIuAw9uilLTC4b-b0/edit
-
-    STEP 1: Open the sheet > Extensions > Apps Script
-    
-    STEP 2: Paste the doPost() function (shown in the JS section above)
-    
-    STEP 3: Deploy > New deployment > Web app
-             Execute as: Me
-             Who has access: Anyone
-    
-    STEP 4: Copy the deployment URL
-    
-    STEP 5: In this HTML file, replace:
-            'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE'
-            with your actual deployment URL
-    
-    The form will then automatically save enquiries to your Google Sheet
-    with columns: Timestamp | Name | Email | Phone | Product Interest | Message
-    ==============================================
-    -->
-
 </body>
 </html>
